@@ -13,10 +13,10 @@ GPIO.setup(ECHO, GPIO.IN)
 pygame.mixer.init()
 
 # laod in audio files
-audio1 = pygame.mixer.Sound('/home/pi/gpio-music-box/soundsamples/bass_drop_c.wav')
-audio2 = pygame.mixer.Sound('/home/pi/gpio-music-box/soundsamples/perc_bell.wav')
-audio3 = pygame.mixer.Sound('/home/pi/gpio-music-box/soundsamples/misc_crow.wav')
-audio4 = pygame.mixer.Sound('/home/pi/gpio-music-box/soundsamples/ambi_choir.wav')
+audio1 = pygame.mixer.Sound('/home/pi/gpio-music-box/soundsamples/50cm.wav')
+audio2 = pygame.mixer.Sound('/home/pi/gpio-music-box/soundsamples/30cm.wav')
+audio3 = pygame.mixer.Sound('/home/pi/gpio-music-box/soundsamples/20cm.wav')
+audio4 = pygame.mixer.Sound('/home/pi/gpio-music-box/soundsamples/10cm.wav')
 
 def measure_distance():
     GPIO.output(TRIG, False)
@@ -61,7 +61,7 @@ def main():
         while True:
             dist = measure_distance()
             last_index = play_audio(dist, last_index)
-            time.sleep(0.5) # polling rate
+            time.sleep(0.8) # polling rate
     except KeyboardInterrupt:
         GPIO.cleanup()
         pygame.mixer.quit()
